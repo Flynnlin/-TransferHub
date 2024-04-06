@@ -12,7 +12,7 @@ RUN adduser -D ${SSH_USER} && echo "${SSH_USER}:${SSH_PASSWORD}" | chpasswd
 # 在容器内创建一个目录用于文件传输
 RUN mkdir -p /transfer
 # 设置 transfer_user 的 HOME 目录为 /transfer
-RUN usermod -d /transfer transfer_user
+RUN sed -i "s|^${SSH_USER}:[^:]*:\([^:]*\):[^:]*:\([^:]*\):[^:]*:|${SSH_USER}:\1:/transfer:\2::|g" /etc/passwd
 
 # 设置 SSH 服务的配置
 RUN sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin no/' /etc/ssh/sshd_config && \

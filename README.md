@@ -5,7 +5,7 @@
 ## 构建 Docker 容器
 
 ```bash
-docker build -t TransferHub .
+docker build -t transferhub .
 ```
 
 ## 启动容器
@@ -13,7 +13,7 @@ docker build -t TransferHub .
 要启动容器，执行以下命令：
 
 ```bash
-docker run -e SSH_USER=myuser -e SSH_PASSWORD=mypassword -p 7022:22 -p 7080:80 -d TransferHub --name file_transfer_container
+docker run -e SSH_USER=myuser -e SSH_PASSWORD=mypassword -p 7022:22 -p 7080:80 -d transferhub --name file_transfer_container
 ```
 
 此命令将在后台启动名为 "file_transfer_container" 的容器，并将容器的 80 端口映射到主机的 7080 端口，22 端口映射到主机的 7022 端口。
