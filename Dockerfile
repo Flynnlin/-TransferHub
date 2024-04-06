@@ -5,8 +5,8 @@ FROM alpine:latest
 RUN apk --no-cache add openssh-server python3
 
 # 创建一个新的 SSH 用户，并设置密码
-ARG SSH_USER=transfer_user
-ARG SSH_PASSWORD=transfer_password
+ENV SSH_USER=transfer_user
+ENV SSH_PASSWORD=transfer_password
 RUN adduser -D ${SSH_USER} && echo "${SSH_USER}:${SSH_PASSWORD}" | chpasswd
 
 # 在容器内创建一个目录用于文件传输
